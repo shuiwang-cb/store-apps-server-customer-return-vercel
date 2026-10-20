@@ -357,6 +357,20 @@ describe("photos", () => {
   });
 });
 
+describe("platform URL override", () => {
+  it("calls CB_PLATFORM_URL instead of the token's platform URL when set", async () => {
+    process.env.CB_PLATFORM_URL = "https://tunnel.example.com";
+    try {
+      await createDefault();
+      expect(platformCalls[0]?.url).toBe(
+        "https://tunnel.example.com/api/v/1/order/orders/SO-100",
+      );
+    } finally {
+      delete process.env.CB_PLATFORM_URL;
+    }
+  });
+});
+
 describe("settings", () => {
   it("any signed-in user reads them; admins change them, validated", async () => {
     expect((await call("GET", "settings")).body).toEqual({});

@@ -18,6 +18,12 @@ export const env = {
   jwksUrl: () =>
     process.env.CB_JWKS_URL?.trim() ||
     `${required("CB_ISSUER").replace(/\/+$/, "")}/api/oidc/jwks`,
+  /**
+   * Call the platform here instead of the token's cb_platform_url. Set it
+   * only when that URL is not reachable from here (a deployed service
+   * talking to a platform that only resolves on a developer's machine).
+   */
+  platformUrlOverride: () => process.env.CB_PLATFORM_URL?.trim() ?? "",
   serviceOrigin: () => new URL(required("SERVICE_ORIGIN")).origin,
   appId: () => required("APP_ID"),
   adminNotifyEmail: () => process.env.ADMIN_NOTIFY_EMAIL?.trim() ?? "",

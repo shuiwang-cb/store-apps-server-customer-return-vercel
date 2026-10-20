@@ -66,7 +66,9 @@ export async function authenticate(request: Request): Promise<Caller> {
     throw unauthorized();
   }
   const platformToken = request.headers.get("x-cb-platform-token") ?? "";
-  const platformUrl = String(claims.cb_platform_url ?? "");
+  const platformUrl = String(claims.cb_platform_url ?? "")
+    ? env.platformUrlOverride() || String(claims.cb_platform_url)
+    : "";
   return {
     storeId,
     userId,
