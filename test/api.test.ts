@@ -102,7 +102,9 @@ beforeAll(async () => {
   privateKey = pair.privateKey;
   setKeysForTests(async () => pair.publicKey);
   await sql.unsafe(`drop schema public cascade; create schema public;`);
-  await sql.unsafe(readFileSync(join(import.meta.dirname, "../migrations/0001_init.sql"), "utf8"));
+  for (const file of ["0001_init.sql", "0002_lock_down_data_api.sql"]) {
+    await sql.unsafe(readFileSync(join(import.meta.dirname, "../migrations", file), "utf8"));
+  }
   vi.stubGlobal("fetch", async (input: string | URL, init?: RequestInit) => {
     const url = String(input);
     const headers = new Headers(init?.headers);

@@ -12,7 +12,7 @@ if (!url) {
   console.error("DATABASE_URL is not set");
   process.exit(1);
 }
-const sql = postgres(url, { prepare: false, max: 1 });
+const sql = postgres(url, { prepare: false, max: 1, onnotice: () => {} });
 const dir = join(import.meta.dirname, "..", "migrations");
 
 try {

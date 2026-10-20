@@ -32,7 +32,7 @@
     "next-env.d.ts",
     "src/**/*.ts",
     "test/**/*.ts",
-    "scripts/**/*.ts",
+    "scripts/**/*.ts", "scripts/**/*.mts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],

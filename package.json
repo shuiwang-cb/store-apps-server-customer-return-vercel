@@ -2,12 +2,12 @@
   "name": "store-apps-server",
   "version": "0.1.0",
   "private": true,
-  "description": "Remote backend for commercebuild custom apps — the Customer Return demo service.",
+  "description": "Remote backend for commercebuild custom apps \u2014 the Customer Return demo service.",
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
-    "migrate": "node --experimental-strip-types scripts/migrate.ts",
+    "migrate": "node --experimental-strip-types scripts/migrate.mts",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
