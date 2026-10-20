@@ -1,0 +1,30 @@
+{
+  "name": "store-apps-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Remote backend for commercebuild custom apps — the Customer Return demo service.",
+  "scripts": {
+    "dev": "next dev -p 4000",
+    "build": "next build",
+    "start": "next start -p 4000",
+    "migrate": "node --experimental-strip-types scripts/migrate.ts",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "jose": "6.1.3",
+    "next": "16.3.8",
+    "postgres": "3.4.9",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.10",
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
